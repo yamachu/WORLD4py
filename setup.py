@@ -116,7 +116,7 @@ class LibraryDownloader(install):
 
 
 setup(
-    name="World4py",
+    name="world4py",
     version="0.1",
     packages=find_packages(),
     description='Python wrapper for WORLD',

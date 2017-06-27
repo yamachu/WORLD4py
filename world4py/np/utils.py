@@ -11,7 +11,7 @@ def get_2d_pointer(numpy_2d_array):
         numpy_2d_array (ndarray(ndim=2)): 2d-numpy array
 
     Returns:
-        ndarray((,1), ndim=2): numpy uintp array
+        ndarray((numpy_2d_array.shape[0],), ndim=1): numpy uintp array
 
     Notice:
         See Original: Sturla Molden's method

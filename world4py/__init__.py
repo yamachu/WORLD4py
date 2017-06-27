@@ -48,4 +48,26 @@ def _get_library(platform):
         raise Exception('This architecture is not supported')
 
 
+def get_native_library_version():
+    '''Get native library version
+
+    Returns:
+        str: NativeLibraryVersion
+    '''
+
+    version_file = pkg_resources.resource_filename(__name__, 'LibraryVersion.txt')
+    with open(version_file) as f:
+        return f.readline()
+
+
+def get_native_library_path():
+    '''Get native library path
+
+    Returns:
+        str: NativeLibraryPath
+    '''
+
+    return _WORLD_LIBRARY_PATH
+
+
 _WORLD_LIBRARY_PATH = pkg_resources.resource_filename(__name__, _get_library(_get_platform()))

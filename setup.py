@@ -108,15 +108,11 @@ class LibraryDownloader(install):
             latest_version,
             self._LIBRARY_NAME[platform][0]), library_full_path)
 
-        with open('{}LibraryVersion.txt'.format(self._get_base_install_path()), 'w') as f:
-            f.write(latest_version)
-
 
     def get_outputs(self):
         return install.get_outputs(self) + [self._get_install_full_path(
             self._get_base_install_path(),
-            self._get_library(self._get_platform)),
-            '{}LibraryVersion.txt'.format(self._get_base_install_path())]
+            self._get_library(self._get_platform)),]
 
 
 setup(

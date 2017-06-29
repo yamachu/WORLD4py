@@ -3,6 +3,7 @@
 
 import ctypes
 
+
 class CheapTrickOption(ctypes.Structure):
     '''heapTrickOption
 

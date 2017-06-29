@@ -6,6 +6,7 @@ Yet another WORLD Python wrpper library
 M.Morise により開発されている分析合成ライブラリ[WORLD](https://github.com/mmorise/World) の非公式Pythonラッパーライブラリです．
 
 オリジナルの WORLD のインタフェースを一部改変した [WORLD](https://github.com/yamachu/World/tree/type/for_cswrapper) をラップしています．
+変更の差分は[こちら](https://github.com/yamachu/World/compare/master...type/for_cswrapper)で確認することが出来ます．
 
 詳細はオリジナルの WORLD のリポジトリ及び文献を参照してください．
 
@@ -186,6 +187,58 @@ apidefinitions._DestroySynthesizer(synthesizer)
 
 使いたいけれど抽象化された API が無いという場合はこのような形式で API にアクセスしてください．
 
+
+### 研究用途での使用
+
+研究に使用する場合バージョンの固定などが必要になる場面があると思います．
+本ラッパーはインストール時に [WORLDのリリースページ](https://github.com/yamachu/World/releases) から対象プラットフォームのライブラリをダウンロードしています．
+そのため，Python のラッパーのバージョンが同じでも，内部で使用しているライブラリのバージョンが一致しないといったことが起こることがあります．
+独自拡張のラッパーのバージョンは
+
+```
+import world4py
+
+world4py.get_native_library_version()
+```
+
+で取得することが出来ます．
+
+このバージョンは独自拡張の [WORLDのリリースページ](https://github.com/yamachu/World/releases) のバージョンを示しています．
+そのバージョンに紐づくコミットの直近のマージコミットを調べることで，オリジナルの WORLD のコミットを調べることが可能です．
+
+以前のバージョンに戻したい，また自分で少し動作を変えたライブラリを試したいと言った場合は，
+
+```
+import world4py
+
+world4py.get_native_library_path()
+```
+
+以上の手順でネイティブライブラリのインストールパスを取得することが出来ます．
+そのファイルを置き換えることで，バージョンのピンニングなどが行なえます．
+
+本ライブラリでのバージョン管理はダウンロードしてきた段階のバージョンタグを _LibraryVersion.txt_ というテキストファイルに書き込んで行っています．
+そのため自分でライブラリを変えたなどの場合はそのファイルのバージョンとは異なることに注意してください．
+
+今後バージョンを指定し差し替えが可能なインタフェースなども検討しています．
+
+
+#### 他の手段
+
+ラッパー側でネイティブライブラリが読み込まれる前に読み込みパスを変更することで対応することも可能です．
+ファイルの書き換えなどが必要なく，また User 権限でも可能であるなどのメリットが有ります．
+
+```
+import world4py
+
+world4py._WORLD_LIBRARY_PATH = 'HERE IS MY LIBRARY PATH'
+
+from world4py.native import apis, tools
+
+# do something
+```
+
+このように _world4py_ の他のモジュールを呼ぶ以前に _world4py.\_WORLD\_LIBRARY\_PATH_ を書き換えることで読み込み先を変更できます．
 
 ---
 

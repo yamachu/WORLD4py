@@ -112,7 +112,7 @@ class LibraryDownloader(install):
     def get_outputs(self):
         return install.get_outputs(self) + [self._get_install_full_path(
             self._get_base_install_path(),
-            self._get_library(self._get_platform)),]
+            self._get_library(self._get_platform())),]
 
 
 setup(

@@ -103,6 +103,8 @@ class LibraryDownloader(install):
         response_json = json.loads(response_str)
         latest_version = response_json['tag_name']
 
+        raise Exception(library_full_path)
+
         urlretrieve("{}/{}/{}".format(
             self._DOWNLOAD_BASE_URL,
             latest_version,

@@ -1,0 +1,3 @@
+exclude demo
+exclude appveyor.yml
+include README.md

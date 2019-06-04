@@ -124,4 +124,11 @@ setup(
     author='yamachu',
     license='MIT',
     cmdclass={'install': LibraryDownloader},
+    keywords='world, world4py',
+    classifiers=[
+        'Topic :: Multimedia :: Sound/Audio',
+        'Topic :: Multimedia :: Sound/Audio :: Analysis',
+        'Topic :: Multimedia :: Sound/Audio :: Sound Synthesis',
+        'Topic :: Multimedia :: Sound/Audio :: Speech',
+    ]
 )
